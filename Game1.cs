@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,7 +11,11 @@ namespace spelsak
 
         Texture2D marko;
 
-        Vector2 markoPos = new Vector2(100, 300);
+        Texture2D makaroner;
+
+        Rectangle markoRect = new Rectangle(0, 0, 100, 200);
+
+        Rectangle makaronerRect = new Rectangle(300, 300, 50, 50);
 
         public Game1()
         {
@@ -36,8 +40,7 @@ namespace spelsak
 
             marko = Content.Load<Texture2D>("marko");
 
-            
-
+            makaroner = Content.Load<Texture2D>("makaroner");
 
 
             // TODO: use this.Content to load your game content here
@@ -53,15 +56,15 @@ namespace spelsak
             
             KeyboardState kstate = Keyboard.GetState();
             if (kstate.IsKeyDown(Keys.Right))
-            markoPos.X++;
+            markoRect.X++;
             if (kstate.IsKeyDown(Keys.Left))
-            markoPos.X--;
+            markoRect.X--;
             base.Update(gameTime);
             
             if (kstate.IsKeyDown(Keys.Up))
-            markoPos.Y--;
+            markoRect.Y--;
             if (kstate.IsKeyDown(Keys.Down))
-            markoPos.Y++;
+            markoRect.Y++;
             base.Update(gameTime);
 
 
@@ -74,7 +77,8 @@ namespace spelsak
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
-            _spriteBatch.Draw(marko, markoPos, Color.White);
+            _spriteBatch.Draw(marko, markoRect, Color.White);
+            _spriteBatch.Draw(makaroner, makaronerRect, Color.White);
             _spriteBatch.End();
             
 
