@@ -15,7 +15,7 @@ namespace spelsak
 
         Rectangle markoRect = new Rectangle(0, 0, 100, 200);
 
-        Rectangle makaronerRect = new Rectangle(300, 300, 50, 50);
+        Rectangle[] makasak = new Rectangle[4];
 
         public Game1()
         {
@@ -36,11 +36,13 @@ namespace spelsak
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            
+            makaroner = Content.Load<Texture2D>("35");
 
             marko = Content.Load<Texture2D>("marko");
 
-            makaroner = Content.Load<Texture2D>("makaroner");
+            for (int i = 1;i < makasak.GetLength(0); i++){
+                makasak[i] = new Rectangle(4 + i * 4, 5, 5, 5);
+            } 
 
 
             // TODO: use this.Content to load your game content here
@@ -78,7 +80,9 @@ namespace spelsak
 
             _spriteBatch.Begin();
             _spriteBatch.Draw(marko, markoRect, Color.White);
-            _spriteBatch.Draw(makaroner, makaronerRect, Color.White);
+            for (int i = 1;i < makasak.GetLength(0); i++){
+                _spriteBatch.Draw(makaroner, makasak[i], Color.White);
+            }
             _spriteBatch.End();
             
 
